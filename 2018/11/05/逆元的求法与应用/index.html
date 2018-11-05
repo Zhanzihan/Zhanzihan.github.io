@@ -1,0 +1,234 @@
+<!DOCTYPE html>
+<html lang="en">
+<head><meta name="generator" content="Hexo 3.8.0">
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="google-site-verification" content="xBT4GhYoi5qRD5tr338pgPM5OWHHIDR6mNg1a3euekI">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="keyword" content="">
+    <link rel="shortcut icon" href="/img/favicon.ico">
+
+    <title>
+        
+        逆元的求法与应用与应用 - undefined
+        
+    </title>
+
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="/css/aircloud.css">
+    <link rel="stylesheet" href="/css/gitment.css">
+    <!--<link rel="stylesheet" href="https://imsun.github.io/gitment/style/default.css">-->
+    <link href="//at.alicdn.com/t/font_620856_pl6z7sid89qkt9.css" rel="stylesheet" type="text/css">
+    <!-- ga & ba script hoook -->
+    <script></script>
+</head>
+
+<body>
+
+<div class="site-nav-toggle" id="site-nav-toggle">
+    <button>
+        <span class="btn-bar"></span>
+        <span class="btn-bar"></span>
+        <span class="btn-bar"></span>
+    </button>
+</div>
+
+<div class="index-about">
+    <i> What gambler lost is all he does not have. </i>
+</div>
+
+<div class="index-container">
+    
+    <div class="index-left">
+        
+<div class="nav" id="nav">
+    <div class="avatar-name">
+        <div class="avatar">
+            <img src="/img/头像-白-少女.png">
+        </div>
+        <div class="name">
+            <i>ZiQiu</i>
+        </div>
+    </div>
+    <div class="contents" id="nav-content">
+        <ul>
+            <li>
+                <a href="/">
+                    <i class="iconfont icon-shouye1"></i>
+                    <span>主页</span>
+                </a>
+            </li>
+            <li>
+                <a href="/tags">
+                    <i class="iconfont icon-biaoqian1"></i>
+                    <span>标签</span>
+                </a>
+            </li>
+            <li>
+                <a href="/archive">
+                    <i class="iconfont icon-guidang2"></i>
+                    <span>存档</span>
+                </a>
+            </li>
+            <li>
+                <a href="/about/">
+                    <i class="iconfont icon-guanyu2"></i>
+                    <span>关于</span>
+                </a>
+            </li>
+            
+            <li>
+                <a id="search">
+                    <i class="iconfont icon-sousuo1"></i>
+                    <span>搜索</span>
+                </a>
+            </li>
+            
+        </ul>
+    </div>
+    
+        <div id="toc" class="toc-article">
+    
+</div>
+    
+</div>
+
+
+<div class="search-field" id="search-field">
+    <div class="search-container">
+        <div class="search-input">
+            <span id="esc-search"> <i class="icon-fanhui iconfont"></i></span>
+            <input id="search-input">
+            <span id="begin-search">搜索</span>
+        </div>
+        <div class="search-result-container" id="search-result-container">
+
+        </div>
+    </div>
+</div>
+        <div class="index-about-mobile">
+            <i> What gambler lost is all he does not have. </i>
+        </div>
+    </div>
+    
+    <div class="index-middle">
+        <!-- Main Content -->
+        
+
+
+<div class="post-container">
+    <div class="post-title">
+        逆元的求法与应用与应用
+    </div>
+
+    <div class="post-meta">
+        <span class="attr">发布于：<span>2018-11-05 20:51:48</span></span>
+        
+        <span class="attr">标签：/
+        
+        <a class="tag" href="/tags/#-数学" title="-数学">-数学</a>
+        <span>/</span>
+        
+        
+        </span>
+        <span class="attr">访问：<span id="busuanzi_value_page_pv"></span>
+</span>
+
+    </div>
+    <div class="post-content no-indent">
+        <p>#逆元的求法与应用<br>逆元主要在求m/n（mod p)时发挥作用<br>逆元有好几种求法</p>
+<p>##求法</p>
+<p>###1.扩展欧几里得<br>由 <strong>am≡ 1 (mod p)</strong><br>    得 <strong>am-pk=1</strong><br>    此时若有m与p互质就可以用扩展欧几里得求出逆元.</p>
+<figure class="highlight routeros"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">int exgcd(ll a,ll b,ll x,ll y)&#123;</span><br><span class="line">	<span class="keyword">if</span>(<span class="attribute">b</span>==0)&#123;</span><br><span class="line">		<span class="attribute">x</span>=1;</span><br><span class="line">		<span class="attribute">y</span>=0;</span><br><span class="line">		return a;</span><br><span class="line">	&#125;</span><br><span class="line">	ll <span class="attribute">x1</span>=y;</span><br><span class="line">	ll <span class="attribute">y1</span>=x-a/b*y;</span><br><span class="line">	<span class="attribute">x</span>=x1,y=y1;</span><br><span class="line">	return exgcd(b,a%b,x,y);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>###2.费马小定理<br>当p为质数，a与p互质时，有a <sup>p-1</sup> ≡ 1 (mod p)<br>所以a<sup>p-2</sup>≡a<sup>-1</sup><br>至于怎么证明=-=我也不会证明(可能会放到欧拉函数里讲)<br><figure class="highlight ini"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">inv[a]</span>=quick_power(a,p-<span class="number">2</span>);</span><br></pre></td></tr></table></figure></p>
+<p>###3.线性求解1-n逆元（重点）<br><strong>am ≡ 1 (mod  p)</strong><br><strong>r*r<sup>-1</sup>=1 (mod p)</strong><br>我们设P=k<em>i+r;<br>所以<br>$\lfloor \frac{p}{i} \rfloor$=k，p%i=r;<br>在mod p的情况下有<br>**k</em>i+r ≡ 0 (mod p)<strong><br>两边同时乘i<sup>-1</sup>,r<sup>-1</sup>有
+</strong>-k<em>r<sup>-1</sup> ≡ i<sup>-1</sup><strong><br>带入k有
+</strong>-p/i </em>(p%i)<sup>-1</sup> = i <sup>-1</sup> **<br>所以i的逆元可以由p%i的逆元推出<br><figure class="highlight gauss"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">inv</span>[<span class="number">1</span>]=<span class="number">1</span>;</span><br><span class="line"><span class="built_in">inv</span>[i]=(-p/i)*<span class="built_in">inv</span>[i];</span><br><span class="line"><span class="built_in">inv</span>[i]=(<span class="built_in">inv</span>[i]%p+p)%p<span class="comment">//(保证为正整数)</span></span><br></pre></td></tr></table></figure></p>
+<p>线性算法例题：<a href="https://www.luogu.org/problemnew/show/P3811" target="_blank" rel="noopener">洛谷3811</a></p>
+<p>##应用<br>阶乘逆元<br><figure class="highlight matlab"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">inv_fac[n]=quick_power(n,p<span class="number">-2</span>);</span><br><span class="line"><span class="keyword">for</span>(int <span class="built_in">i</span>=n<span class="number">-1</span>;<span class="built_in">i</span>&gt;=<span class="number">1</span>;<span class="built_in">i</span>--)</span><br><span class="line">	inv_fac[<span class="built_in">i</span>]=inv_fac[<span class="built_in">i</span>+<span class="number">1</span>]*(<span class="built_in">i</span>+<span class="number">1</span>)<span class="comment">%p;</span></span><br></pre></td></tr></table></figure></p>
+<p>这里为什么可以这么做手推一下就出来了<br>相当于多除一个数之后再乘回去<br>例题<br><a href="http://noi.ac/contest/31/problem/65" target="_blank" rel="noopener">triangle</a><br><figure class="highlight excel"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br></pre></td><td class="code"><pre><span class="line">#include&lt;cstdio&gt;</span><br><span class="line">#include&lt;cstdlib&gt;</span><br><span class="line">using namespace std;</span><br><span class="line">const <span class="built_in">int</span> <span class="built_in">N</span>=<span class="number">100010</span>;</span><br><span class="line">const <span class="built_in">int</span> <span class="built_in">MOD</span>=<span class="number">1</span>e9+<span class="number">9</span>;</span><br><span class="line">typedef long long ll;</span><br><span class="line">ll fac[<span class="built_in">N</span>+<span class="number">5</span>],inv_fac[<span class="built_in">N</span>+<span class="number">5</span>];</span><br><span class="line">ll quick_power(ll d,ll e)</span><br><span class="line">&#123;</span><br><span class="line">	ll ans=<span class="number">1</span>;</span><br><span class="line">	while(e)</span><br><span class="line">	&#123;</span><br><span class="line">		<span class="built_in">if</span>(e&amp;<span class="number">1</span>) ans=ans%<span class="built_in">MOD</span>*d%<span class="built_in">MOD</span>;</span><br><span class="line">		d=(d*d)%<span class="built_in">MOD</span>;</span><br><span class="line">		e&gt;&gt;=<span class="number">1</span>;</span><br><span class="line">	&#125;</span><br><span class="line">	ans%=<span class="built_in">MOD</span>;</span><br><span class="line">	return ans;	</span><br><span class="line">&#125;</span><br><span class="line"><span class="built_in">int</span> main()</span><br><span class="line">&#123;</span><br><span class="line">	<span class="built_in">int</span> <span class="built_in">t</span>;</span><br><span class="line">	fac[<span class="number">1</span>]=fac[<span class="number">0</span>]=<span class="number">1</span>;</span><br><span class="line">	for(<span class="built_in">int</span> i=<span class="number">2</span>;i&lt;<span class="built_in">N</span>;i++)fac[i]=fac[i-<span class="number">1</span>]%<span class="built_in">MOD</span>*i%<span class="built_in">MOD</span>; </span><br><span class="line">	inv_fac[<span class="built_in">N</span>-<span class="number">1</span>]=quick_power(fac[<span class="built_in">N</span>-<span class="number">1</span>],<span class="built_in">MOD</span>-<span class="number">2</span>);</span><br><span class="line">	for(<span class="built_in">int</span> i=<span class="built_in">N</span>-<span class="number">2</span>;i&gt;=<span class="number">1</span>;i--)inv_fac[i]=inv_fac[i+<span class="number">1</span>]%<span class="built_in">MOD</span>*(i+<span class="number">1</span>)%<span class="built_in">MOD</span>;</span><br><span class="line">	inv_fac[<span class="number">0</span>]=<span class="number">1</span>;</span><br><span class="line">	scanf(<span class="string">"%d"</span>,&amp;<span class="built_in">t</span>);</span><br><span class="line">	while(<span class="built_in">t</span>--)</span><br><span class="line">	&#123;</span><br><span class="line">		ll a,b,<span class="built_in">n</span>,m;</span><br><span class="line">		scanf(<span class="string">"%lld%lld%lld%lld"</span>,&amp;a,&amp;b,&amp;<span class="built_in">n</span>,&amp;m);</span><br><span class="line">		ll ans=fac[<span class="built_in">n</span>-<span class="number">1</span>]%<span class="built_in">MOD</span>*inv_fac[m-<span class="number">1</span>]%<span class="built_in">MOD</span>*inv_fac[<span class="built_in">n</span>-m]%<span class="built_in">MOD</span>*quick_power(a,<span class="built_in">n</span>-m)%<span class="built_in">MOD</span>*quick_power(b,m-<span class="number">1</span>)%<span class="built_in">MOD</span>;</span><br><span class="line">		printf(<span class="string">"%lld\n"</span>,ans%<span class="built_in">MOD</span>);</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+
+        
+        <br>
+        <div id="comment-container">
+        </div>
+        <div id="disqus_thread"></div>
+
+        <div id="lv-container">
+        </div>
+
+    </div>
+</div>
+    </div>
+</div>
+
+
+<footer class="footer">
+    <ul class="list-inline text-center">
+        
+        
+        <li>
+            <a target="_blank" href="https://www.zhihu.com/people/zhang-zi-han-10-63">
+                            <span class="fa-stack fa-lg">
+                                 <i class="iconfont icon-zhihu"></i>
+                            </span>
+            </a>
+        </li>
+        
+
+        
+
+        
+
+        
+        <li>
+            <a target="_blank" href="https://github.com/Zhanzihan">
+                            <span class="fa-stack fa-lg">
+                                <i class="iconfont icon-github"></i>
+                            </span>
+            </a>
+        </li>
+        
+
+        
+
+    </ul>
+    
+    <p>
+        <span>/</span>
+        
+        <span><a href="https://Sakuraxz.github.io">XZ</a></span>
+        <span>/</span>
+        
+    </p>
+    
+    <p>
+        <span id="busuanzi_container_site_pv">
+            <span id="busuanzi_value_site_pv"></span>PV
+        </span>
+        <span id="busuanzi_container_site_uv">
+            <span id="busuanzi_value_site_uv"></span>UV
+        </span>
+        Created By <a href="https://hexo.io/">Hexo</a>  Theme <a href="https://github.com/aircloud/hexo-theme-aircloud">AirCloud</a></p>
+</footer>
+
+
+
+
+</body>
+
+<script>
+    // We expose some of the variables needed by the front end
+    window.hexo_search_path = "search.json"
+    window.hexo_root = "/"
+    window.isPost = true
+</script>
+<script src="https://cdn.bootcss.com/jquery/3.3.1/jquery.min.js"></script>
+<script src="/js/index.js"></script>
+<script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+
+
+
+</html>
